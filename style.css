@@ -1,0 +1,155 @@
+:root {
+  --bg: #111827;
+  --panel: #1f2937;
+  --tile: #374151;
+  --tile-border: #6b7280;
+  --text: #f9fafb;
+  --green: #22c55e;
+  --orange: #f59e0b;
+  --gray: #4b5563;
+  --blue: #60a5fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://forbes.com.br/wp-content/uploads/2021/07/ForbesCollab_Perguntas_130721_mikroman6GettyImages.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+}
+
+.game {
+  width: min(90vw, 520px);
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 24px 20px 18px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+h1 {
+  text-align: center;
+  margin: 0 0 6px;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+.subtitle {
+  text-align: center;
+  margin: 0 0 18px;
+  color: #cbd5e1;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+}
+
+.board {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.tile {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  border: 2px solid var(--tile-border);
+  background: var(--tile);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.tile.filled {
+  border-color: #9ca3af;
+  background: #1f2937;
+}
+
+.tile.correct {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.tile.present {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.tile.absent {
+  background: var(--gray);
+  border-color: var(--gray);
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.action {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--blue);
+  color: #0f172a;
+  transition: transform 0.15s ease;
+}
+
+.action:hover {
+  transform: translateY(-1px);
+}
+
+.action.secondary {
+  background: #e5e7eb;
+}
+
+.message {
+  min-height: 24px;
+  margin: 18px 0 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.message.success {
+  color: #86efac;
+}
+
+.message.error {
+  color: #fca5a5;
+}
+
+.message.info {
+  color: #bfdbfe;
+}
+
+@media (max-width: 420px) {
+  .game {
+    padding: 18px 14px 14px;
+  }
+
+  .row {
+    gap: 8px;
+  }
+}
