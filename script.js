@@ -6,6 +6,8 @@ const boardEl = document.getElementById("board");
 const messageEl = document.getElementById("message");
 const submitBtn = document.getElementById("submitBtn");
 const deleteBtn = document.getElementById("deleteBtn");
+const playAgainWrap = document.getElementById("playAgainWrap");
+const playAgainBtn = document.getElementById("playAgainBtn");
 
 const rows = [];
 let secretWord = "";
@@ -56,6 +58,10 @@ function pickRandomWord() {
 function setMessage(text, type = "info") {
   messageEl.textContent = text;
   messageEl.className = `message ${type}`;
+}
+
+function togglePlayAgainButton(show) {
+  playAgainWrap.hidden = !show;
 }
 
 function createBoard() {
@@ -166,11 +172,13 @@ function submitGuess() {
   if (guess === secretWord) {
     isFinished = true;
     setMessage(`Parabéns! Você acertou: ${secretWord}`, "success");
+    togglePlayAgainButton(currentRow === MAX_ATTEMPTS - 1);
     return;
   }
 
   if (currentRow === MAX_ATTEMPTS - 1) {
     isFinished = true;
+    togglePlayAgainButton(false);
     setMessage(`Você perdeu! A palavra era: ${secretWord}`, "error");
     return;
   }
@@ -203,9 +211,14 @@ function startGame() {
   currentRow = 0;
   currentCol = 0;
   isFinished = false;
+  togglePlayAgainButton(false);
   createBoard();
   setMessage("Adivinhe a palavra de 5 letras.", "info");
 }
+
+playAgainBtn.addEventListener("click", () => {
+  loadWords();
+});
 
 loadWords();
 

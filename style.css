@@ -125,6 +125,12 @@ h1 {
   background: #e5e7eb;
 }
 
+.play-again-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
 .message {
   min-height: 24px;
   margin: 18px 0 0;
